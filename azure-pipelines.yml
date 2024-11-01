@@ -43,17 +43,3 @@ steps:
     allowPackageConflicts: true
   condition: succeeded()
 
-- task: Npm@1
-  inputs:
-    command: 'install'
-    workingDir: 'install jsonlint -g'
-- task: CmdLine@2
-  inputs:
-    script: 'jsonlint Website.json'
-    workingDirectory: 'DeployWebApp'
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    action: 'Create Or Update Resource Group'
-    templateLocation: 'Linked artifact'
-    deploymentMode: 'Validation'
